@@ -1,0 +1,230 @@
+<div class="flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-[#7A7A7A] selection:text-white">
+
+    <!-- Sidebar with Event Binding -->
+    <app-sidebar (menuSelect)="onMenuSelect($event)"></app-sidebar>
+
+    <!-- Main Content -->
+    <main
+        class="flex-1 flex flex-col overflow-hidden relative bg-gradient-to-br from-[#F5F5F5] via-[#FAFAFA] to-[#F5F5F5]">
+
+        <!-- Decorative Background Elements (Grayish) -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B3B3B3]/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-500/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3 pointer-events-none">
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6 relative flex flex-col z-10">
+
+            <!-- CHAT VIEW (Default) -->
+            <div *ngIf="currentView === 'chat'"
+                class="flex-1 max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-4 gap-6 animate-fade-in-up h-full pb-6">
+
+                <!-- Main Chat Area (Cyan Theme) -->
+                <div
+                    class="lg:col-span-3 flex flex-col bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white/50 overflow-hidden relative">
+
+                    <!-- Chat Header -->
+                    <div
+                        class="p-5 border-b border-slate-100/50 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-20">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-[#00AEEF] rounded-full blur opacity-40 animate-pulse">
+                                </div>
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00AEEF] to-[#4DD0E1] flex items-center justify-center text-white shadow-lg relative z-10 ring-2 ring-white">
+                                    <i class="fas fa-robot text-xl"></i>
+                                </div>
+                                <div
+                                    class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white z-20">
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-lg">Asistente Virtual IA</h3>
+                                <p class="text-xs text-[#00AEEF] font-semibold tracking-wide uppercase">En línea</p>
+                            </div>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-400 transition-colors">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+
+                    <!-- Messages Area -->
+                    <app-legal-chat class="flex-1 overflow-hidden pointer-events-auto"></app-legal-chat>
+
+                </div>
+
+                <!-- Right Sidebar: Chat History -->
+                <div
+                    class="lg:col-span-1 bg-white/60 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-white/50 overflow-hidden flex flex-col h-full">
+                    <div class="p-6 border-b border-slate-100/50 bg-white/40">
+                        <h3 class="font-bold text-slate-700 flex items-center gap-3">
+                            <div class="p-2 bg-[#E1F5FE] rounded-lg text-[#007399]"><i class="fas fa-history"></i></div>
+                            Historial
+                        </h3>
+                    </div>
+                    <div class="flex-1 overflow-y-auto p-4 space-y-2 custom-scrollbar">
+                        <!-- History Item 1 -->
+                        <div
+                            class="p-4 bg-white hover:bg-[#E1F5FE] rounded-2xl cursor-pointer transition-all hover:scale-[1.02] border border-transparent hover:border-[#00AEEF]/20 shadow-sm group">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="font-bold text-slate-700 text-sm group-hover:text-[#007399]">Estafas
+                                    Digitales</span>
+                            </div>
+                            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">Análisis del código penal
+                                respecto a
+                                fraudes...</p>
+                            <div
+                                class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400">
+                                <span><i class="far fa-clock mr-1"></i> 10:30 AM</span>
+                                <span class="font-medium text-[#00AEEF]">Hoy</span>
+                            </div>
+                        </div>
+
+                        <!-- History Item 2 -->
+                        <div
+                            class="p-4 bg-white/50 hover:bg-[#E1F5FE] rounded-2xl cursor-pointer transition-all hover:scale-[1.02] border border-transparent hover:border-[#00AEEF]/20 shadow-sm group">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="font-bold text-slate-700 text-sm group-hover:text-[#007399]">Ley de
+                                    Tierras</span>
+                            </div>
+                            <div
+                                class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400">
+                                <span><i class="far fa-clock mr-1"></i> 15:45 PM</span>
+                                <span class="font-medium text-slate-400">Ayer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- UPLOAD VIEW -->
+            <div *ngIf="currentView === 'upload'" class="w-full max-w-4xl mx-auto mt-10 animate-fade-in px-6">
+
+                <div
+                    class="bg-white rounded-[2.5rem] p-12 shadow-xl border border-slate-100 text-center relative overflow-hidden">
+                    <!-- Background Decoration -->
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-cyan-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 z-0">
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div
+                            class="w-20 h-20 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center mb-6 shadow-sm border border-slate-100">
+                            <i class="fas fa-cloud-upload-alt text-4xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-slate-700 mb-2">Subir Documentos Legales</h3>
+                        <p class="text-slate-500 mb-8 max-w-md mx-auto">Selecciona tus expedientes o documentos (PDF,
+                            DOCX). Se guardarán en la base de datos segura.</p>
+
+                        <!-- Case Selection -->
+                        <div class="w-full max-w-md mb-6 text-left">
+                            <label class="block text-sm font-medium text-slate-600 mb-2 ml-1">Asociar a Expediente
+                                (Opcional)</label>
+                            <select [(ngModel)]="selectedCaseId"
+                                class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-[#00AEEF] focus:ring-2 focus:ring-[#00AEEF]/20 outline-none transition-all text-slate-700 font-medium appearance-none">
+                                <option [ngValue]="null">-- Sin asociar --</option>
+                                <option *ngFor="let c of cases" [value]="c.id">{{ c.title }}</option>
+                            </select>
+                        </div>
+
+                        <!-- File Selection Area -->
+                        <div *ngIf="uploadStatus === 'idle' || uploadStatus === 'error'" class="w-full max-w-md">
+                            <input type="file" (change)="onFileSelected($event)" class="hidden" id="fileInput"
+                                accept=".pdf,.doc,.docx">
+                            <label for="fileInput"
+                                class="block w-full border-2 border-dashed border-slate-300 rounded-2xl p-10 cursor-pointer hover:border-[#00AEEF] hover:bg-slate-50 transition-all group">
+                                <div class="text-slate-400 group-hover:text-[#00AEEF] transition-colors">
+                                    <i class="fas fa-plus-circle text-3xl mb-3"></i>
+                                    <p class="font-medium">Haz clic para seleccionar</p>
+                                </div>
+                            </label>
+                            <p *ngIf="selectedFile"
+                                class="mt-4 text-slate-600 font-semibold flex items-center justify-center gap-2">
+                                <i class="fas fa-file-alt text-[#00AEEF]"></i> {{ selectedFile.name }}
+                            </p>
+                            <p *ngIf="errorMessage"
+                                class="mt-4 text-red-500 text-sm bg-red-50 p-2 rounded-lg border border-red-100">
+                                <i class="fas fa-exclamation-circle mr-1"></i> {{ errorMessage }}
+                            </p>
+                        </div>
+
+                        <!-- Uploading State -->
+                        <div *ngIf="uploadStatus === 'uploading'" class="w-full max-w-md py-10">
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 mb-4 overflow-hidden">
+                                <div class="bg-[#00AEEF] h-2.5 rounded-full animate-progress"></div>
+                            </div>
+                            <p class="text-slate-500 text-sm animate-pulse">Encriptando y subiendo al servidor...</p>
+                        </div>
+
+                        <!-- Success State -->
+                        <div *ngIf="uploadStatus === 'success'" class="w-full max-w-md py-6">
+                            <div
+                                class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce-short">
+                                <i class="fas fa-check text-2xl"></i>
+                            </div>
+                            <p class="text-slate-700 font-bold text-lg">¡Archivo subido exitosamente!</p>
+                            <p class="text-slate-400 text-sm mb-6">Guardado en base de datos cifrada.</p>
+                            <button (click)="uploadStatus = 'idle'; selectedFile = null"
+                                class="text-[#00AEEF] font-semibold hover:underline">Subir otro archivo</button>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="mt-8 flex flex-col gap-3 w-full max-w-xs"
+                            *ngIf="selectedFile && uploadStatus === 'idle'">
+                            <button (click)="onUpload()"
+                                class="w-full py-3 bg-[#00AEEF] hover:bg-[#009bd6] text-white rounded-xl font-bold shadow-lg shadow-cyan-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                                <span>Iniciar Carga</span>
+                                <i class="fas fa-database opacity-70"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEARCH VIEW: Minimalist Search -->
+            <div *ngIf="currentView === 'search'"
+                class="w-full h-[calc(100vh-250px)] flex flex-col items-center justify-center animate-fade-in mx-auto px-6">
+
+                <!-- Search Input Container -->
+                <div class="w-full max-w-xl relative transform transition-all hover:scale-[1.01] duration-300">
+                    <input type="text" placeholder="Buscar..."
+                        class="w-full py-4 pl-8 pr-16 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.03)] text-slate-700 font-medium text-lg border border-slate-100 focus:outline-none focus:shadow-[0_15px_40px_rgba(122,122,122,0.08)] focus:border-[#B3B3B3]/40 transition-all placeholder:text-slate-300 placeholder:font-light tracking-wide">
+
+                    <button
+                        class="absolute right-2 top-2 bottom-2 w-12 bg-[#7A7A7A] rounded-full flex items-center justify-center text-white hover:bg-[#595959] transition-all shadow-md cursor-pointer hover:shadow-lg hover:scale-105 active:scale-95 duration-200 group">
+                        <i class="fas fa-search text-base group-hover:rotate-12 transition-transform"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- TEMARIO VIEW (New) -->
+            <div *ngIf="currentView === 'bulk'" class="w-full max-w-7xl animate-fade-in mx-auto mt-6 pb-12">
+                <h3
+                    class="text-3xl font-bold text-slate-700 mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#7A7A7A] to-[#595959]">
+                    Temario Completo</h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div *ngFor="let topic of topicList"
+                        class="bg-white/60 backdrop-blur-md rounded-3xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-white/50 hover:bg-white hover:shadow-[0_15px_40px_rgba(122,122,122,0.15)] transition-all duration-300 cursor-pointer group hover:-translate-y-1 flex items-center gap-4">
+
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-[#7A7A7A] shadow-inner group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-folder text-lg"></i>
+                        </div>
+
+                        <span class="font-semibold text-slate-600 group-hover:text-[#7A7A7A] transition-colors">{{ topic
+                            }}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>

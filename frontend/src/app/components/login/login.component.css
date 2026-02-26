@@ -1,0 +1,220 @@
+/* Global Reset for this component */
+:host {
+  display: block;
+  font-family: 'Roboto', 'Inter', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  /* Full screen background */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Optional Overlay to darken background slightly for readability */
+.login-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  /* Slight dark tint */
+  z-index: 1;
+}
+
+/* Hide the old brand column as we use full background now */
+.brand-column {
+  display: none !important;
+}
+
+/* Overlay for better text contrast if needed */
+.brand-column::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(79, 209, 197, 0.2) 0%, rgba(44, 122, 123, 0.4) 100%);
+}
+
+.brand-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right Column becomes just a center container */
+.login-column {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* Glassmorphism Card */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 3rem;
+
+  /* Glass Effect */
+  background: rgba(255, 255, 255, 0.85);
+  /* Semi-transparent white */
+  backdrop-filter: blur(12px);
+  /* Blur behind the card */
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Logo Area */
+.logo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo-icon {
+  width: 90px;
+}
+
+.logo-text {
+  width: 200px;
+}
+
+.brand-title {
+  display: none;
+  /* Hide text title since we have the logo image with text now */
+}
+
+.brand-subtitle {
+  color: #2C3E50;
+  /* Darker slate */
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 0.5rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(226, 232, 240, 0.8);
+  border-radius: 50px;
+  font-size: 1rem;
+  color: #2D3748;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #A0AEC0;
+}
+
+input:focus {
+  border-color: #4FD1C5;
+  box-shadow: 0 0 0 4px rgba(79, 209, 197, 0.15);
+  background-color: #fff;
+}
+
+/* Button Styles */
+.btn-primary {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #2C7A7B 0%, #38B2AC 100%);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(56, 178, 172, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 178, 172, 0.5);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #cbd5e1;
+}
+
+/* Helper Links */
+.form-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.helper-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  /* Center links for single card layout */
+}
+
+.helper-link {
+  color: #4A5568;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.helper-link:hover {
+  color: #2C7A7B;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #e53e3e;
+  font-size: 0.875rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsive Design */

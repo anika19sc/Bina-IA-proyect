@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+cryptography
+sqlalchemy
+psycopg2-binary
+pgvector
+pydantic
+pyinstaller
+python-jose[cryptography]
+passlib[bcrypt]
+httpx
+python-dotenv
+google-cloud-vision
+pymupdf

@@ -1,0 +1,14 @@
+﻿src/app/app.component.spec.ts(4,1): error TS2593: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/app/app.component.spec.ts(5,3): error TS2304: Cannot find name 'beforeEach'.
+src/app/app.component.spec.ts(11,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/app/app.component.spec.ts(14,5): error TS2304: Cannot find name 'expect'.
+src/app/app.component.spec.ts(17,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/app/app.component.spec.ts(20,5): error TS2304: Cannot find name 'expect'.
+src/app/app.component.spec.ts(23,3): error TS2593: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
+src/app/app.component.spec.ts(27,5): error TS2304: Cannot find name 'expect'.
+src/app/app.component.ts(3,30): error TS2307: Cannot find module '@angular/router' or its corresponding type declarations.
+src/app/app.config.ts(2,31): error TS2307: Cannot find module '@angular/router' or its corresponding type declarations.
+src/app/app.routes.ts(1,24): error TS2307: Cannot find module '@angular/router' or its corresponding type declarations.
+src/app/components/legal-chat/legal-chat.component.ts(3,29): error TS2307: Cannot find module '@angular/forms' or its corresponding type declarations.
+src/main.ts(1,38): error TS2307: Cannot find module '@angular/platform-browser' or its corresponding type declarations.
+src/main.ts(6,11): error TS7006: Parameter 'err' implicitly has an 'any' type.

@@ -137,3 +137,19 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Custom Project Rules
+__pycache__/
+*.pyc
+venv/
+env/
+.DS_Store
+build/
+
+# Google Cloud / Vertex AI Credentials
+service_account.json
+backend/service_account.json
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json

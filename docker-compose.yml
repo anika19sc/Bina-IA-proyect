@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  bina-frontend:
+    build: ./frontend
+    container_name: bina-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - bina-backend
+    networks:
+      - bina-network
+
+  bina-backend:
+    build: ./backend
+    container_name: bina-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@bina-db:5432/binadb
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    depends_on:
+      - bina-db
+    volumes:
+      - ./backend/secure_uploads:/app/secure_uploads
+    networks:
+      - bina-network
+
+  bina-db:
+    image: pgvector/pgvector:pg15
+    container_name: bina-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: binadb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bina-network
+
+networks:
+  bina-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

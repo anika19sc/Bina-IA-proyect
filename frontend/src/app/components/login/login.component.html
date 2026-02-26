@@ -1,0 +1,49 @@
+<div class="login-wrapper">
+  <!-- Left Column: Graphic/Brand -->
+  <div class="brand-column">
+    <div class="brand-content">
+      <!-- Background image will be set via CSS -->
+    </div>
+  </div>
+
+  <!-- Right Column: Login Form -->
+  <div class="login-column">
+    <div class="login-card">
+      <div class="logo-area">
+        <img src="assets/corte_logo.png" alt="Bina Legal" class="logo logo-icon">
+        <img src="assets/corte_logo_letras.png" alt="Bina Legal" class="logo logo-text">
+      </div>
+
+      <form (ngSubmit)="login()">
+        <!-- Email Input -->
+        <div class="form-group">
+          <input type="email" id="username" [(ngModel)]="username" name="username" placeholder="Email"
+            [disabled]="isLoading" required>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Contraseña"
+            [disabled]="isLoading" required>
+        </div>
+
+        <!-- Buttons and Helpers -->
+        <div class="form-actions">
+          <button type="submit" [disabled]="isLoading" class="btn-primary">
+            <span *ngIf="!isLoading">Ingresar</span>
+            <span *ngIf="isLoading">Cargando...</span>
+          </button>
+
+          <div class="helper-links">
+            <a href="#" class="helper-link">◉ Recordar cuenta.</a>
+            <a href="#" class="helper-link">◉ Olvidé mi usuario o contraseña.</a>
+          </div>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

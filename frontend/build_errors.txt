@@ -1,0 +1,4 @@
+﻿
+> bina-legal@0.0.0 build
+> ng build
+
